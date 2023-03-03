@@ -1,0 +1,209 @@
+.main-div{
+    background-image: linear-gradient(to right, #dc316e , #faae41);
+    max-height: 270px;
+}
+.card-div{
+    padding: 20px;
+    background-color: white;
+    margin: 20px 0px 20px 0px;
+    border-radius: 8px;
+}
+.card-div-trans{
+    padding: 20px;
+    background-color: white;
+    margin: 0px 0px 20px 0px;
+    border-radius: 8px;
+}
+.cards-row{
+    padding: 0px 18px 0px 18px; 
+}
+.card-cont{
+    padding-right: 0px;
+}
+.card-cont-trans{
+    padding-right: inherit;
+}
+.lbl-line-title{
+    color: #969696;
+}
+.title-bar{
+    border-radius: 6px;
+    text-align: center;
+    background-color: white;
+}
+.lbl-home{
+    color: white;
+    font-weight: 700;
+    text-align: center;
+}
+.bi-person-fill{
+    background: #adb5bd;
+    color: white;
+    padding: 7px;
+    border-radius: 68px;
+    width: 35px;
+    height: 35px;
+}
+.lbl-home{
+    margin-top: 9px;
+}
+.user-lbls{
+    font-size: 12px;
+    color: white;
+    font-weight: 500;
+}
+.logo-img{
+    margin: 21px 10px 2px 21px;
+    border-radius: 6px;
+}
+.btn-seeall{
+    float: right;
+    font-size: 12px;
+    font-weight: 700;
+    background-color: #5e72e4;
+}
+thead{
+    background-color: #eef6fe;
+    color: #969696;
+    font-size: 12px;
+}
+table{
+    font-size: 13px;
+    border-top: 1px solid #00000014;
+}
+td, th{
+    padding: 12px;
+}
+.bar-transaction{
+    padding: 21px 18px 16px 27px;
+}
+.resp-transaction{
+    padding: 17px 18px 19px 27px;
+}
+.p-left-30px{
+    padding-left: 60px;
+}
+.p-right-25px{
+    padding-right: 25px;
+}
+.modal{
+    background-color: #000000b3;
+    padding-top: 80px;
+    padding-left: 838px;
+}
+.modal-content{
+    display: block;
+    padding: 23px;
+}
+.btn-success{
+    width: 100%;
+    border-radius: 26px;
+}
+.btn-cross{
+    float: right;
+    margin-top: -13px;
+    margin-right: -10px;
+    cursor: pointer;
+}
+.bi-x{
+    height: 23px;
+    width: 23px;
+}
+hr{
+    color: #7e7e7e;
+}
+.text-right{
+    text-align: right;
+}
+.btn-dark{
+    width: 100%;
+    border-radius: 26px;
+    background: #d0d0d0;
+    color: black;
+    border: 0px;
+}
+.salesLineChart-div{
+    margin-top: 29px;
+}
+.barChart-div{
+    padding: 10px 30px 202px 30px;
+}
+.tbody-div{
+    margin-top: 9px;
+    max-height: 500px;
+    overflow: auto;
+}
+.box-shadow{
+    box-shadow: 0px 6px 13px 4px #00000026;
+}
+.pieChart-div{
+    padding: 25px 52px 145px 52px;
+}
+.tranBarChart-div{
+    padding: 15px 50px 100px 50px; 
+}
+.lbl-purchase{
+    background-color: #198754;
+    border-radius: 25px;
+    text-align: center;
+    color: white;
+    padding: 6px;
+}
+.lbl-amtDet{
+    background-color: #e3e3e3;
+    border-radius: 25px;
+    text-align: center;
+    color: black;
+    padding: 6px;
+}
+.btn-primary{
+    width: 170px;
+    margin-top: 15px;
+    margin-right: 15px;
+    background-color: #5e72e4;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.btn-light{
+    width: 120px;
+    margin-top: 15px;
+    margin-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #969696;
+}
+.trans-timespan{
+    margin-left: 15px;
+}
+.lbl-line-amt{
+    font-weight: 700;
+}
+.searchtxt{
+    float: right;
+    width: 579px;
+    margin-right: 5px;
+    margin-top: -4px;
+}
+.lbl-downrpo{
+    float: right;
+    font-weight: 700;   
+    margin-right: 25px;
+    color: #5e72e4;
+    cursor: pointer;
+}
+.bi-check{
+    width: 20px;
+    height: 20px;
+    color: #0e870e;
+}
+.bi-exclamation-triangle-fill{
+    width: 12px;
+    height: 12px;
+    color: red;
+    margin-left: 5px;
+}
+.bi-plus{    
+    width: 20px;
+    height: 20px;
+    color: #0e870e;
+}

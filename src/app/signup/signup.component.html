@@ -1,0 +1,86 @@
+<nav class="navbar navbar-light">
+    <span class="navbar-brand mb-0 h1 navbar-top">OmniPayments</span>
+  </nav>
+  
+  <div class="container text-center">
+    <div class="row">
+  
+  
+      <div class="col-2"></div>
+  
+      <div class="col-4 form-div">
+        
+        <div class="lbl-welcome">Welcome</div><br>
+  
+        <div class="lbl-msg">Create new account in your project</div><br>
+   
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label float-left">FirstName</label>
+          <input type="text" class="form-control" placeholder="FirstName" [(ngModel)]="firstName">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label float-left">LastName</label>
+          <input type="text" class="form-control" placeholder="LastName" [(ngModel)]="lastName">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label float-left">MerchantId</label>
+          <input [ngStyle]="merchantId==='Invalid MerchantId' ? {'color': 'red'} : {'color': '#969696'}" 
+          type="text" class="form-control" placeholder="MerchantId" [(ngModel)]="merchantId">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label float-left">Role</label>
+          <select class="form-select" aria-label="Default select example" [(ngModel)]="role">
+            <option value="MERCHANT_OWNER" selected>MERCHANT_OWNER</option>
+            <option value="ADMIN">Admin</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label float-left">Merchant Scale</label>
+          <select class="form-select" aria-label="Default select example"  [(ngModel)]="scale">
+            <option value="small" selected>Small</option>
+            <option value="medium">Medium</option>
+            <option value="big">Big Merchant</option>
+          </select>
+        </div>
+        <div class="mb-3" >
+          <label for="exampleFormControlInput1" class="form-label float-left">Email</label>
+          <input [ngStyle]="email==='Invalid Email' ? {'color': 'red'} : {'color': '#969696'}" type="email" class="form-control" placeholder="Email" [(ngModel)]="email">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label float-left">UserName</label>
+          <input type="text" class="form-control" placeholder="UserName" [(ngModel)]="userName">
+        </div>
+        
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label float-left">Password</label>
+          <input 
+           type="password" class="form-control" placeholder="Password" [(ngModel)]="password">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label float-left">Confirm Password</label>
+          <input   [ngStyle]="confpassword==='Password didnot match' ? {'color': 'red'} : {'color': '#969696'}"
+           type="text" class="form-control" placeholder="Confirm Password" [(ngModel)]="confpassword">
+        </div>
+        
+  
+        <div>
+          <button type="button" class="btn btn-submit" (click)="singup()">Sign Up</button>
+        </div>
+  
+        <div>
+          <span class="lbl-signup-txt">Already have account?</span> <span class="lbl-signup" routerLink="/"> Sign In</span>
+        </div>
+  
+      </div>
+       
+      <div class="col-1"></div>
+      <div class="col-4"><img src="../../assets/bg_login_pic.jpg" alt="Trulli" class="bg_login_pic">
+        <img src="../../assets/bg_login_pic.jpg" alt="Trulli" class="bg_login_pic_2"></div>
+    </div>
+  </div>
+  
+  <!-- <div class="chart-container">
+    <canvas  id="MyChart" >{{ chart }}</canvas>
+  </div> -->
+  
+  
