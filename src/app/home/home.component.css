@@ -1,6 +1,7 @@
 .main-div{
     background-image: linear-gradient(to right, #dc316e , #faae41);
     max-height: 824px;
+    margin-bottom: 976px;
 }
 .card-div{
     padding: 20px;
@@ -149,4 +150,22 @@ hr{
     text-align: center;
     color: black;
     padding: 6px;
+}
+.card-img-maestro{
+    height: 29px;
+    width: 37px;
+    margin-left: 3px;
+}
+.card-img-mastercard{
+    height: 28px;
+    width: 35px;
+    margin-left: 3px;
+}
+.card-img-visa{
+    height: 15px;
+    width: 45px;
+}
+.fa-plus{
+    font-size: 10px;
+    color: #168b16;
 }

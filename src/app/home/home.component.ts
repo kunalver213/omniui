@@ -2,6 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Chart } from 'chart.js';
 import { Signup } from '../model/signup.model';
+import { Router } from '@angular/router';
+import { Login } from '../model/login.model';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +12,8 @@ import { Signup } from '../model/signup.model';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
+  faPlus = faPlus;
 
   displayStyle = "none";
   canvas: any;
@@ -37,14 +42,28 @@ export class HomeComponent implements OnInit {
   @ViewChild('tranBarChart') tranBarChart: any;
 
   latestTran : any;
+  tranStatsSales : number = 0;
+  tranStatsTransactions : number = 0;
+  tranStatsFees : number = 0;
+  tranStatsCommission : number = 0;
   transPop : any;
   
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   user: Signup = new Signup;
+  login: Login = new Login;
 
   ngOnInit(): void {
+    if(!localStorage.getItem('id')){
+      this.router.navigate(['/']);
+    }else{
+      this.login = JSON.parse(localStorage.getItem('id') || '{}');
+    }
+  }
 
+  logout(){
+    localStorage.removeItem('id');
+    this.router.navigate(['/']);
   }
 
   
@@ -63,30 +82,48 @@ export class HomeComponent implements OnInit {
           var trandataVal = new Array();
           var commLabelsVal = new Array();
           var commdataVal = new Array();
+          var feeLabelsVal = new Array();
+          var feedataVal = new Array();
 
           for (let i = 0; i < res.data.length; i++) {
             if(res.data[i].grp=='sales'){
               salesLabelsVal.push(res.data[i].datev);
               salesdataVal.push(res.data[i].amt);
+              this.tranStatsSales += 1;
             }
             else if(res.data[i].grp=='tran'){
               tranLabelsVal.push(res.data[i].datev);
               trandataVal.push(res.data[i].amt);
+              this.tranStatsTransactions += 1;
             }else if(res.data[i].grp=='comm'){
               commLabelsVal.push(res.data[i].datev);
               commdataVal.push(res.data[i].amt);
+              this.tranStatsCommission += 1;
+            }else if(res.data[i].grp=='fees'){
+              feeLabelsVal.push(res.data[i].datev);
+              feedataVal.push(res.data[i].amt);
+              this.tranStatsFees += 1;
             }
           }
           
           this.createsalesLineChart(salesLabelsVal, salesdataVal);
           this.createtransactionsLineChart(tranLabelsVal, trandataVal);
           this.createcommissionLineChart(commLabelsVal, commdataVal);
+          this.createfeesLineChart(feeLabelsVal, feedataVal);
           
         }else{
         
         }
       }
     );
+
+    // this.http.post('http://localhost:8080/tran_history', this.user).subscribe(
+    //   (res:any) => {
+    //     if(res.length>0){
+    //       this.tranStats = res.data[0]; 
+    //     }
+    //   }
+    // );
 
     this.http.post('http://localhost:8080/home_trans_latest', this.user).subscribe(
       (res:any) => {
@@ -132,8 +169,23 @@ export class HomeComponent implements OnInit {
       }
     );
 
-    this.createfeesLineChart();
-    this.createbarRespCodeChart(); 
+    this.http.post('http://localhost:8080/home_resp_code', this.user).subscribe(
+      (res:any) => {
+        if(res.length>0){
+
+          var barRespCodeLables = new Array();
+          var barRespCodeData = new Array();
+
+          for (let i = 0; i < res.data.length; i++) {
+            barRespCodeLables.push( (res.data[i].ResponseDesc==null ? '00' : res.data[i].ResponseDesc) );
+            barRespCodeData.push(res.data[i].count);            
+          }
+
+          this.createbarRespCodeChart(barRespCodeLables, barRespCodeData); 
+        }
+      }
+    );
+
   }
   
   openPopup(tran:any) {
@@ -257,7 +309,7 @@ export class HomeComponent implements OnInit {
   
   }
 
-  createfeesLineChart(){
+  createfeesLineChart(feeLabelsVal:any, feedataVal:any){
     this.feesLineChartcanvas = this.feesLineChart.nativeElement;
     this.feesLineChartctx = this.feesLineChartcanvas.getContext('2d');
 
@@ -269,14 +321,14 @@ export class HomeComponent implements OnInit {
     new Chart(this.feesLineChartctx, {
       type: 'line',
       data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: feeLabelsVal,
         datasets: [{
           backgroundColor: gradient,
           borderColor: '#ec250d',
           pointBackgroundColor: '#ec250d',
           label: ' Amount',
           fill: true,
-          data: [8, 9, 8, 7, 9, 8],
+          data: feedataVal,
         }]
       },
       options: {
@@ -370,17 +422,17 @@ export class HomeComponent implements OnInit {
   }
 
 
-  createbarRespCodeChart(){
+  createbarRespCodeChart(barRespCodeLables:any, barRespCodeData:any){
     this.barcanvas = this.barRespCodeChart.nativeElement;
     this.barctx = this.barcanvas.getContext('2d');
 
     new Chart(this.barctx, {
       type: "bar",
       data: {
-        labels: ['a','a','a','a','a','a','a','a','a','a'],
+        labels: barRespCodeLables,
         datasets: [{
           label: 'RespCode',
-          data: [65, 59, 80, 81, 56, 55, 40],
+          data: barRespCodeData,
           backgroundColor: '#682861',
           categoryPercentage: 1.2,
         }]

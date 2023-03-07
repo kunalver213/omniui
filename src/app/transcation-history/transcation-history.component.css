@@ -1,6 +1,7 @@
 .main-div{
     background-image: linear-gradient(to right, #dc316e , #faae41);
     max-height: 270px;
+    margin-bottom: 740px;
 }
 .card-div{
     padding: 20px;
@@ -130,7 +131,7 @@ hr{
 }
 .tbody-div{
     margin-top: 9px;
-    max-height: 500px;
+    min-height: 653px;
     overflow: auto;
 }
 .box-shadow{
@@ -196,14 +197,37 @@ hr{
     height: 20px;
     color: #0e870e;
 }
-.bi-exclamation-triangle-fill{
-    width: 12px;
-    height: 12px;
+.fa-faExclamationTriangle{
     color: red;
-    margin-left: 5px;
+    font-size: 10px;
 }
 .bi-plus{    
     width: 20px;
     height: 20px;
     color: #0e870e;
+}
+.card-img-maestro{
+    height: 29px;
+    width: 37px;
+    margin-left: 3px;
+}
+.card-img-mastercard{
+    height: 28px;
+    width: 35px;
+    margin-left: 3px;
+}
+.card-img-visa{
+    height: 15px;
+    width: 45px;
+}
+.fa-plus{
+    font-size: 10px;
+    color: #168b16;
+}
+.pagination-controls-div{
+    position: absolute;
+    top: 925px;
+}
+.card-type-sec{
+    height: 54px;
 }

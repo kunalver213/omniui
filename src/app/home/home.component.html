@@ -1,7 +1,13 @@
+
 <div class="container" class="main-div">
 
+  
+
+
     <div class="row">
-        <div class="col-2"><img src="../../assets/omnilogo.jpg" alt="Trulli" width="80" height="40" class="logo-img"></div>
+        <div class="col-2" >
+          <img src="../../assets/omnilogo.jpg" alt="Trulli" width="80" height="40" class="logo-img">          
+        </div>
         <div class="col-8 lbl-home">
           <div class="lbl-home">HOME</div>
         </div>
@@ -9,11 +15,22 @@
             <div class="row">
                 <div class="invisible">.</div>
                 <div class="col-1"></div>
-                <div class="col-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></svg></div>
-                <div class="col-8 user-lbls">
-                    <div>User: Sachin</div> 
-                    <div>MerchantId: COMPARQTI</div> 
+                <div class="col-2" ngbDropdown>
+
+                  <svg id="dropdownBasic1" ngbDropdownToggle xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+                  </svg>
+
+                  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem  (click)="logout()">Log Out</button>
+                  </div>
+
                 </div>
+                <div class="col-8 user-lbls">
+                    <div>User: {{login.user}}</div> 
+                    <div>MerchantId: {{login.merchantId}}</div> 
+                </div>
+                
             </div>
             
         </div> 
@@ -31,7 +48,7 @@
       <div class="col-3 card-cont">
         <div class="card-div">
             <div class="lbl-line-title">SALES</div>
-            <div class="lbl-line-amt">$ 519</div>
+            <div *ngIf="tranStatsSales" class="lbl-line-amt">{{tranStatsSales}}</div>
             <hr>
             <div class="salesLineChart-div">              
               <canvas id="salesLineChart" width="700" height="750" #salesLineChart></canvas>
@@ -41,7 +58,7 @@
       <div class="col-3 card-cont">
         <div class="card-div">
             <div class="lbl-line-title">TRANSACTIONS</div>
-            <div class="lbl-line-amt">$ 519</div>
+            <div *ngIf="tranStatsTransactions" class="lbl-line-amt">{{tranStatsTransactions}}</div>
             <hr>
             <div class="salesLineChart-div">              
               <canvas id="transactionsLineChart" width="700" height="750" #transactionsLineChart></canvas>
@@ -51,7 +68,7 @@
       <div class="col-3 card-cont">
         <div class="card-div">
             <div class="lbl-line-title">FEES</div>
-            <div class="lbl-line-amt">$ 519</div>
+            <div *ngIf="tranStatsFees" class="lbl-line-amt">{{tranStatsFees}}</div>
             <hr>
             <div class="salesLineChart-div">              
               <canvas id="feesLineChart" width="700" height="750" #feesLineChart></canvas>
@@ -61,7 +78,7 @@
       <div class="col-3">
         <div class="card-div">
             <div class="lbl-line-title">COMMISSION</div>
-            <div class="lbl-line-amt">$ 519</div>
+            <div *ngIf="tranStatsCommission" class="lbl-line-amt">{{tranStatsCommission}}</div>
             <hr>
             <div class="salesLineChart-div">              
               <canvas id="commissionLineChart" width="700" height="750" #commissionLineChart></canvas>
@@ -91,10 +108,21 @@
                 <tbody>
                   <tr (click)="openPopup(tran)" *ngFor="let tran of latestTran">
                     <td class="p-left-25px">{{tran.datev}} {{tran.timev}}</td>
-                    <td>{{tran.CardType}}</td>
-                    <td>{{tran.TransactionType}}</td>
+                    <td>
+                      <img *ngIf="tran.CardType==='2002'" src="../../assets/maestro.jpg" alt="Trulli" class="card-img-maestro">
+                      <img *ngIf="tran.CardType==='2001'" src="../../assets/mastercard2.jpg" alt="Trulli" class="card-img-mastercard">
+                      <img *ngIf="tran.CardType==='8051'" src="../../assets/visa.jpg" alt="Trulli" class="card-img-visa">
+                    </td>
+                    <td>
+                      <span *ngIf="tran.TransactionType==='000000' && tran.MessageType==='0210'">Purchase</span>
+                      <span *ngIf="tran.TransactionType==='200000' && tran.MessageType==='0210'">Refund</span>
+                      <span *ngIf="tran.TransactionType==='000000' && tran.MessageType==='0420'">Purchase Reversal</span>
+                      <span *ngIf="tran.TransactionType==='200000' && tran.MessageType==='0420'">Refund Reversal</span>
+                    </td>
                     <td>{{tran.RetrivalReferance}}</td>
-                    <td class="p-right-25px">{{tran.Amount}}</td>
+                    <td class="p-right-25px">
+                      <fa-icon class="fa-plus" [icon]="faPlus"></fa-icon>
+                       $ {{tran.Amount}}</td>
                   </tr>
                 </tbody>
               </table>
@@ -153,7 +181,7 @@
         </div>
       </div>
   </div>
-  </div>
+</div>
 
 
 
@@ -175,7 +203,7 @@
       <hr>
       <div class="row">
         <div class="col-6">Card</div>
-        <div class="col-6 text-right">{{transPop.datev}}</div>
+        <div class="col-6 text-right">{{transPop.card}}</div>
       </div>
       <div class="row">
         <div class="col-6">Statement Date</div>
@@ -192,7 +220,7 @@
       </div>
       <div class="row">
         <div class="col-6">Approval Code</div>
-        <div class="col-6 text-right">{{transPop.datev}}</div>
+        <div class="col-6 text-right">{{transPop.approvalCode}}</div>
       </div>
       <div class="row">
         <div class="col-6">RRN</div>
@@ -203,15 +231,15 @@
       <hr>
       <div class="row">
         <div class="col-6">Transaction Amount</div>
-        <div class="col-6 text-right">{{transPop.Amount}}</div>
+        <div class="col-6 text-right">{{transPop.TransactionAmount}}</div>
       </div>
       <div class="row">
         <div class="col-6">Commission</div>
-        <div class="col-6 text-right">{{transPop.datev}}</div>
+        <div class="col-6 text-right">{{transPop.Commissions}}</div>
       </div>
       <div class="row">
         <div class="col-6">Fees</div>
-        <div class="col-6 text-right">{{transPop.datev}}</div>
+        <div class="col-6 text-right">{{transPop.fees}}</div>
       </div>
 
       

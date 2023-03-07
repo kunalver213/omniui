@@ -20,10 +20,14 @@ export class LoginComponent implements OnInit {
   constructor(private http: HttpClient,private router: Router) { }
 
   ngOnInit(): void {
+    if(localStorage.getItem('id')){
+      this.router.navigate(['/home']);
+    }
   }
 
 
   login(){
+
     this.user.user = this.userVal;
     this.user.password = this.passVal;
     this.http.post('http://localhost:8080/login', this.user).subscribe(
@@ -31,6 +35,9 @@ export class LoginComponent implements OnInit {
       {
         console.log(res)
         if(res.length>0){
+          this.user.merchantId = res.data[0].merchantId;
+          this.user.password = undefined;
+          localStorage.setItem('id', JSON.stringify( this.user ) );
           this.router.navigate(['/home']);          
         }else{
           this.lblMsg = "Invalid User";
