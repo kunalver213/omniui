@@ -48,23 +48,15 @@ export class HomeComponent implements OnInit {
   tranStatsCommission : number = 0;
   transPop : any;
   
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient) { }
 
   user: Signup = new Signup;
-  login: Login = new Login;
 
   ngOnInit(): void {
-    if(!localStorage.getItem('id')){
-      this.router.navigate(['/']);
-    }else{
-      this.login = JSON.parse(localStorage.getItem('id') || '{}');
-    }
+    
   }
 
-  logout(){
-    localStorage.removeItem('id');
-    this.router.navigate(['/']);
-  }
+  
 
   
   ngAfterViewInit() { 

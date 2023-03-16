@@ -38,7 +38,8 @@ export class LoginComponent implements OnInit {
           this.user.merchantId = res.data[0].merchantId;
           this.user.password = undefined;
           localStorage.setItem('id', JSON.stringify( this.user ) );
-          this.router.navigate(['/home']);          
+          this.router.navigate(['/home']);  
+          window.location.reload();        
         }else{
           this.lblMsg = "Invalid User";
           this.lblMsgInvalid  = true;

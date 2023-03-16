@@ -1,7 +1,7 @@
 .main-div {
 	background-image: linear-gradient(to right, #dc316e, #faae41);
-	max-height: 270px;
-	margin-bottom: 740px
+	max-height: 182px;
+	margin-bottom: 169px
 }
 
 .card-div {
@@ -19,7 +19,7 @@
 }
 
 .cards-row {
-	padding: 0 18px 0 18px
+	padding: 0 18px 0 18px;
 }
 
 .card-cont {
@@ -27,7 +27,8 @@
 }
 
 .card-cont-trans {
-	padding-right: inherit
+	padding-right: inherit;
+    margin-top: 83px;
 }
 
 .lbl-line-title {
@@ -74,8 +75,8 @@ th {
 
 .tbody-div {
 	margin-top: 9px;
-	min-height: 653px;
-	overflow: auto
+	min-height: 120px;
+    background-color: #f7fafc;
 }
 
 .box-shadow {
@@ -158,4 +159,48 @@ th {
 
 .card-type-sec {
 	height: 54px
+}
+.down-panel{
+	background-color: #f0f0f0;
+    padding: 11px;
+    margin: 35px;	
+    border-radius: 4px;
+}
+.down-panel-main{
+	padding: 7px 13px 13px 13px;
+}
+.downl-div{
+	background: red;
+    padding: 16px;
+}
+.fa-calendar-day{
+	font-size: 20px;
+    background: #d7d9db;
+    padding: 6px 12px 8px 12px;
+    border-radius: 32px;
+    color: #5c5c5c;
+}
+.choose-date{
+    color: #969798;
+    font-size: 14px;
+    font-weight: 500;
+}
+.lbl-date{
+    color: #969798;
+    font-size: 14px;
+}
+.datel-row{
+	padding-top: 8px;
+}
+.txt-date{
+	visibility: hidden;
+    position: absolute;	
+}
+.down-panel-right{
+    padding: 11px;
+    margin: 25px;	
+    border-radius: 4px;
+}
+.downloadReport-link{
+	cursor: pointer;
 }

@@ -1,0 +1,101 @@
+<div>
+
+    <div class="container" class="main-div">
+
+        <div class="row cards-row">
+            <div class="col-12 card-cont-trans">
+                <div class="card-div-trans p-0 box-shadow">
+                    <div class="bar-transaction"> 
+                        Download Reports
+                    </div>
+
+                    <div class="tbody-div">
+
+
+                        <div class="down-panel-main">                            
+
+                            <div class="row">
+                            
+                                <div class="col-6">
+
+                                    <div class="row">
+
+                                        <div class="col-6">
+                                            <div class="row down-panel">
+
+                                                <div class="col-9">
+                                                    <span class="choose-date">
+                                                        Choose Date
+                                                    </span>
+                                                    <br>
+                                                    <span class="lbl-date" *ngIf="model">
+                                                        {{ model.day }}/{{ model.month }}/{{ model.year }}    
+                                                               
+                                                    </span>                                    
+                                                </div>
+
+                                                <div class="col-3 datel-row">
+                                                    <span>
+                                                        
+                                                        <input
+                                                        class="txt-date"
+                                                        placeholder="yyyy-mm-dd"
+                                                        name="dp"
+                                                        [(ngModel)]="model"
+                                                        ngbDatepicker
+                                                        #d="ngbDatepicker"
+                                                        readonly
+                                                        
+                                                    />
+                                                    <fa-icon class="fa-calendar-day" [icon]="faCalendarDay" (click)="d.toggle()"></fa-icon>
+                                                    </span>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="col-6">
+
+                                    <div class="row">
+
+                                        <div class="col-6">
+                                            <div class="row down-panel-right">
+
+                                                <div class="col-9" *ngIf="model">
+                                                   <a class="downloadReport-link" (click)="downloadReport()"> ../assets/downloadReports/RetailerSummary/2023/01/01</a><!-- {{ model.day }}/{{ model.month }}/{{ model.year }}                                  -->
+                                                   
+                                                </div>
+
+                                                
+                                                
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        
+                 
+
+                          
+
+                
+
+
+                    </div>
+                </div>
+            </div>
+          
+        </div>
+
+    </div>
+
+</div>

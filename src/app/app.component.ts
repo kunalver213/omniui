@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import Chart from 'chart.js/auto';
+import { Login } from './model/login.model';
 
 
 @Component({
@@ -11,8 +13,26 @@ export class AppComponent {
   title = 'omniui';
 
   public chart: any;
+  login: Login = new Login;
+  header:boolean = false;
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+    if(!localStorage.getItem('id')){
+      this.router.navigate(['/']);
+      this.header = false;
+    }else{
+      this.login = JSON.parse(localStorage.getItem('id') || '{}');
+      this.header = true;
+    }
+    console.log(this.header);
+  }
+
+  logout(){
+    localStorage.removeItem('id');
+    this.router.navigate(['/']); 
+    window.location.reload();      
   }
 
   createChart(){

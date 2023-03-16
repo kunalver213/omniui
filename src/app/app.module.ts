@@ -16,6 +16,7 @@ import { TranscationHistoryComponent } from './transcation-history/transcation-h
 import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { DownloadReportComponent } from './download-report/download-report.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     LoginComponent,
     SignupComponent,
     HomeComponent,
-    TranscationHistoryComponent
+    TranscationHistoryComponent,
+    DownloadReportComponent
   ],
   imports: [
     BrowserModule,
