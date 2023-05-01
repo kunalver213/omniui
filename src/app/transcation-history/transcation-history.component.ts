@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Signup } from '../model/signup.model';
+import { User } from '../model/user.model';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
@@ -13,10 +13,12 @@ import { ngxCsv } from 'ngx-csv/ngx-csv';
 })
 export class TranscationHistoryComponent implements OnInit {
 
-  user: Signup = new Signup;
+  user: User = new User;
   faCheck = faCheck;
   faPlus = faPlus;
   faExclamationTriangle = faExclamationTriangle;
+  
+  loader : boolean = true;
 
   tranHistory : any;
   tranHistoryTab : any;
@@ -38,11 +40,10 @@ export class TranscationHistoryComponent implements OnInit {
       (res:any) => {
         if(res.length>0){
           this.tranHistory = res.data[0]; 
+          this.postList();
         }
       }
     );
-
-    this.postList();
 
   }
 
@@ -55,6 +56,7 @@ export class TranscationHistoryComponent implements OnInit {
           if(this.searchText.length>0){
             this.filterData();
           }
+          this.loader = false; 
         }
       }
     );

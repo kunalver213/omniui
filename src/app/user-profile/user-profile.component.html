@@ -1,0 +1,77 @@
+<div>
+
+    <div id="cover-spin" *ngIf="loader"></div>
+    <div class="loader" *ngIf="loader"></div>
+
+    <div class="container" class="main-div">
+
+        <div class="row cards-row">
+            <div class="col-12 card-cont-trans">
+                <div class="card-div-trans p-0 box-shadow">
+                    <div class="bar-transaction">
+                        User Details
+                        <button class="btn-back">Back</button>
+                       
+                    </div>
+
+                    <div class="tbody-div">
+                         
+
+                          <div class="row">
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label lbl-txt">First Name</label>
+                                    <input type="text" class="form-control form-txt " placeholder="firstName" [(ngModel)]="user.firstName">
+                                    <br>
+                                    <label for="exampleFormControlInput1" class="form-label lbl-txt">Merchant ID</label>
+                                    <input type="text" class="form-control form-txt" placeholder="merchantId" [(ngModel)]="user.merchantId" readonly>
+                                    <br>
+                                    <label for="exampleFormControlInput1" class="form-label lbl-txt">User Name</label>
+                                    <input type="text" class="form-control form-txt" placeholder="userName" [(ngModel)]="user.username">
+                                    <br>
+                                    <label for="exampleFormControlInput1" class="form-label lbl-txt">Role</label>
+                                    <!-- <input type="text" class="form-control form-txt" placeholder="role" [(ngModel)]="user.role"> -->
+                                    <select class="form-select form-txt" aria-label="Default select example" [(ngModel)]="user.role">
+                                    <option value="MERCHANT_OWNER" selected>MERCHANT_OWNER</option>
+                                    <option value="ADMIN">Admin</option>
+                                    </select>
+                                    <br>
+                                    <label for="exampleFormControlInput1" class="form-label lbl-txt">Last Updated</label>
+                                    <input type="text" class="form-control form-txt" placeholder="updated" [(ngModel)]="user.updatedAt" readonly>
+                                    <button class="btn-update" (click)="updateUser()">Update</button>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-6">                                
+                                <div class="mb-3">
+
+                                    <label for="exampleFormControlInput1" class="form-label lbl-txt">Last Name</label>
+                                    <input type="text" class="form-control form-txt" placeholder="lastName" [(ngModel)]="user.lastName">
+                                    <br>
+                                    <label for="exampleFormControlInput1" class="form-label lbl-txt">Email Address</label>
+                                    <input type="text" class="form-control form-txt" placeholder="email" [(ngModel)]="user.emailAddress">
+                                    <br>
+                                    <label for="exampleFormControlInput1" class="form-label lbl-txt">Password</label>
+                                    <input type="text" class="form-control form-txt" placeholder="password" [(ngModel)]="user.password">
+                                    <br>
+                                    <label for="exampleFormControlInput1" class="form-label lbl-txt">Merchant Scale</label>
+                                    <!-- <input type="text" class="form-control form-txt" placeholder="scale" [(ngModel)]="user.scale"> -->
+                                    <select class="form-select form-txt" aria-label="Default select example"  [(ngModel)]="user.scale">
+                                    <option value="small" selected>Small</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="big">Big Merchant</option>
+                                    </select>
+                                    
+                                </div>
+                            </div>
+                          </div>
+
+                    </div>
+                </div>
+            </div>
+          
+        </div>
+
+    </div>
+
+</div>

@@ -1,4 +1,4 @@
-export class Signup {
+export class User {
 
     firstName: string | undefined;
     lastName: string | undefined;
@@ -10,4 +10,6 @@ export class Signup {
     password: string | undefined;
     confpassword: string | undefined;
     scale: string | undefined;
+    id: number | undefined;
+    updatedAt: string | undefined;
 }

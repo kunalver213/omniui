@@ -20,54 +20,70 @@ export class DownloadReportComponent implements OnInit {
 
   pdfData : any;
 
+  filesList : any = 'xx';
+
   constructor(private calendar: NgbCalendar, private http: HttpClient) { }
 
   ngOnInit(): void {    
     this.model = this.calendar.getToday();
-    this.getReport();
+    this.getEntityId();
   }
 
-  getReport(){
+  getEntityId(){
     this.user.merchantId = 'ClaroBP'; 
     this.user.datev = this.model?.year+'-'+this.model?.month+'-'+this.model?.day;
-    this.user.datev = '2023-01-01';
+    this.user.datev = '230324';
 
-    this.http.post('http://localhost:8080/download_report', this.user).subscribe(
+    this.http.post('http://localhost:8080/get_entityid', this.user).subscribe( 
       (res:any) => {
-        if(res.length>0){
-          this.pdfData = res;
-        }
+        this.filesList = res.data;
       }
     );
+
+    
   }
+  
+  // getReport(){
+  //   this.user.merchantId = 'ClaroBP'; 
+  //   this.user.datev = this.model?.year+'-'+this.model?.month+'-'+this.model?.day;
+  //   this.user.datev = '2023-01-01';
 
-  downloadReport(){
-    const doc = new jsPDF()
+  //   this.http.post('http://localhost:8080/download_report', this.user).subscribe(
+  //     (res:any) => {
+  //       if(res.length>0){
+  //         this.pdfData = res;
+  //       }
+  //     }
+  //   );
+  // }
 
-    var bodyArr:string[][] = [];
-    var alphas:string[]; 
+  // downloadReport(){
+  //   const doc = new jsPDF()
 
-    this.pdfData.data.forEach(function (value: any) {
-      alphas = [value.Dates, value.CardType, value.TransactionType, value.RetrivalReferance, value.Amount, value.TransactionStatus];
-      bodyArr.push(alphas);
-    }); 
+  //   var bodyArr:string[][] = [];
+  //   var alphas:string[]; 
 
-    doc.setFontSize(20);
-    doc.setTextColor(40);
-    doc.text('Merchant : '+this.user.merchantId, 10, 22);
+  //   this.pdfData.data.forEach(function (value: any) {
+  //     alphas = [value.Dates, value.CardType, value.TransactionType, value.RetrivalReferance, value.Amount, value.TransactionStatus];
+  //     bodyArr.push(alphas);
+  //   }); 
 
-    doc.setFontSize(10);
+  //   doc.setFontSize(20);
+  //   doc.setTextColor(40);
+  //   doc.text('Merchant : '+this.user.merchantId, 10, 22);
 
-    autoTable(doc, {
-      head: [['Dates', 'Card Type', 'TransactionType', 'Retrival Referance', 'Amount','Transaction Status']],
-      body: bodyArr,
-      startY: 35,
-    })
+  //   doc..setFontSize(10);
+
+  //   autoTable(doc, {
+  //     head: [['Dates', 'Card Type', 'TransactionType', 'Retrival Referance', 'Amount','Transaction Status']],
+  //     body: bodyArr,
+  //     startY: 35,
+  //   })
 
     
 
-    doc.save(this.user.merchantId+'_report.pdf')
-  }
+  //   doc.save('FIID_ReportName'+this.user.merchantId+'_YYMMDD.pdf')
+  // }
 
  
 

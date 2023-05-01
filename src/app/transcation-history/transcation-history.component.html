@@ -1,3 +1,6 @@
+<div id="cover-spin" *ngIf="loader"></div>
+<div class="loader" *ngIf="loader"></div>
+
 <div>
 
     <div class="container" class="main-div">
@@ -16,29 +19,29 @@
 
         </div>
 
-        <div class="row cards-row" *ngIf="tranHistory">
+        <div class="row cards-row">
             <div class="col-3 card-cont"> 
             <div class="card-div box-shadow">
                 <div class="lbl-line-title">SALES</div>
-                <div class="lbl-line-amt">$ {{tranHistory.Sales}}</div>
+                <div class="lbl-line-amt"><span  *ngIf="tranHistory && tranHistoryTabAll">$ {{tranHistory.Sales}}</span></div>
             </div>
             </div>
             <div class="col-3 card-cont">
             <div class="card-div box-shadow">
                 <div class="lbl-line-title">TRANSACTIONS</div>
-                <div class="lbl-line-amt">$ {{tranHistory.Transactions}}</div>
+                <div class="lbl-line-amt"><span  *ngIf="tranHistory && tranHistoryTabAll">$ {{tranHistory.Transactions}}</span></div>
             </div>
             </div>
             <div class="col-3 card-cont">
             <div class="card-div box-shadow">
                 <div class="lbl-line-title">FEES</div>
-                <div class="lbl-line-amt">$ {{tranHistory.Fees}}</div>
+                <div class="lbl-line-amt"><span  *ngIf="tranHistory && tranHistoryTabAll">$ {{tranHistory.Fees}}</span></div>
             </div>
             </div>
             <div class="col-3">
             <div class="card-div box-shadow">
                 <div class="lbl-line-title">COMMISSION</div>
-                <div class="lbl-line-amt">$ {{tranHistory.Commission}}</div>
+                <div class="lbl-line-amt"><span  *ngIf="tranHistory && tranHistoryTabAll">$ {{tranHistory.Commission}}</span></div>
             </div>
             </div>
         </div>

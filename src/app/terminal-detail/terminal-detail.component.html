@@ -1,0 +1,57 @@
+<div>
+
+    <div class="container" class="main-div">
+
+
+
+        <div class="row cards-row">
+            <div class="col-12 card-cont-trans">
+                <div class="card-div-trans p-0 box-shadow">
+                    <div class="bar-transaction"> 
+                        Terminal Details
+                        <button class="btn-back">Back</button>
+                        <input type="text" class="form-control searchtxt" placeholder="Search" (keyup)="filterData()" [(ngModel)]="searchText">
+                        
+                    </div>
+
+                    <div class="tbody-div">
+                        <table class="table" *ngIf="tranHistoryTab">
+                            <thead class="sticky-top">
+                            <tr>
+                                <th scope="col" class="p-left-30px">NO. OF SERIES</th>
+                                <th scope="col">MODEL</th>
+                                <th scope="col">STATUS</th>
+                                <th scope="col">CREATED DATE</th>
+                                <th scope="col" class="p-right-25px">UPDATED DATE</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let tran of tranHistoryTab | paginate: { itemsPerPage: tableSize, currentPage: page, totalItems: count }; let i = index ">
+                                    <td class="p-left-30px">{{tran.No_Of_Series}}</td>
+                                    <td class="card-type-sec"> {{tran.Model}} </td>
+                                    <td>
+                                        <span class="lbl-enabled" *ngIf="tran.Status===1">ENABLED</span>
+                                        <span class="lbl-disabled" *ngIf="tran.Status===0">DISABLED</span>
+                                    </td>
+                                    <td>{{tran.created_at}}</td>
+                                    <td class="p-right-25px"> {{tran.updated_at}} </td>
+                                </tr>
+                            </tbody>
+                        </table>
+    
+    
+                        <pagination-controls
+                        class="pagination-controls-div"
+                        previousLabel="Previous"
+                        nextLabel="Next"
+                        (pageChange)="onTableDataChange($event)">
+                        </pagination-controls>
+                        </div>
+                </div>
+            </div>
+          
+        </div>
+
+    </div>
+
+</div>

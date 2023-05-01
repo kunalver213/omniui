@@ -1,9 +1,7 @@
-@import "../loader.css";
-
 .main-div {
 	background-image: linear-gradient(to right, #dc316e, #faae41);
-	max-height: 270px;
-	margin-bottom: 740px
+	max-height: 990px;
+    margin-bottom: -20px;
 }
 
 .card-div {
@@ -160,4 +158,8 @@ th {
 
 .card-type-sec {
 	height: 54px
+}
+
+.mt-70{
+    margin-top: 70px;
 }

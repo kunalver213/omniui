@@ -6,7 +6,7 @@
             <div class="col-12 card-cont-trans">
                 <div class="card-div-trans p-0 box-shadow">
                     <div class="bar-transaction"> 
-                        Download Reports
+                        Admin Download Reports
                     </div>
 
                     <div class="tbody-div">
@@ -40,7 +40,7 @@
                                                         <input
                                                         class="txt-date"
                                                         placeholder="yyyy-mm-dd"
-                                                        name="dp"
+                                                        name="dp" 
                                                         [(ngModel)]="model"
                                                         ngbDatepicker
                                                         #d="ngbDatepicker"
@@ -68,9 +68,9 @@
                                                 <div class="col-9" *ngIf="model">
                                                    <!-- <a class="downloadReport-link" > ../assets/downloadReports/RetailerSummary/2023/01/01</a>{{ model.day }}/{{ model.month }}/{{ model.year }}                                  -->
                                                   
-                                                   <span *ngFor="let file of filesList">
+                                                   <!-- <span *ngFor="let file of filesList">
                                                     <a href="http://localhost:8080/download_report/{{file}}">{{file}}</a><br>
-                                                   </span>
+                                                   </span> -->
 
                                                 </div>
                                                 

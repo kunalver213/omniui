@@ -1,8 +1,16 @@
 
   <div *ngIf="header" class="header-div">
     <div class="row">
-    <div class="col-2" >
-      <img src="../assets/OmniPayments-_2_.jpg" alt="Trulli" width="80" height="40" class="logo-img">          
+    <div ngbDropdown class="col-2" >
+      <img src="../assets/OmniPayments-_2_.jpg" alt="Trulli" width="80" height="40" class="logo-img" id="dropdownBasic1" ngbDropdownToggle>       
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button ngbDropdownItem class="ddbtn" routerLink="/home">Home</button>
+          <button ngbDropdownItem class="ddbtn" routerLink="/transcation-history">Transcation History</button>
+          <button ngbDropdownItem class="ddbtn" routerLink="/download-report">Download Reports</button>
+          <button ngbDropdownItem class="ddbtn" routerLink="/terminal-detail">Terminal Details</button>
+          <button ngbDropdownItem class="ddbtn" routerLink="/user-profile">User Details</button>
+          <button ngbDropdownItem class="ddbtn" routerLink="/merchant-profile">Merchant Details</button>
+        </div>
     </div>
     <div class="col-8 lbl-home">
       <div class="lbl-home" routerLink="/home">HOME</div>
@@ -18,12 +26,12 @@
               </svg>
 
               <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <button ngbDropdownItem  (click)="logout()">Log Out</button>
+                <button ngbDropdownItem class="ddbtn" (click)="logout()">Log Out</button>
               </div>
 
             </div>
             <div class="col-8 user-lbls">
-                <div>User: {{login.user}}</div> 
+                <div>User: {{login.username}}</div> 
                 <div>MerchantId: {{login.merchantId}}</div> 
             </div>
             

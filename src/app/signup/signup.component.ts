@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Signup } from '../model/signup.model';
+import { User } from '../model/user.model';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -21,11 +21,14 @@ export class SignupComponent implements OnInit {
   scale: string = "small";
   expression: RegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 
-  signup: Signup = new Signup;
+  signup: User = new User;
 
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
+    if(localStorage.getItem('owuitoken')){
+      this.router.navigate(['/home']);
+    }
   }
 
   singup(){

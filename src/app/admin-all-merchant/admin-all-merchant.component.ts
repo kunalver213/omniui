@@ -1,22 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Merchant } from '../model/merchant.model';
 import { Chart } from 'chart.js';
-import { User } from '../model/user.model';
-import { Router } from '@angular/router';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-admin-all-merchant',
+  templateUrl: './admin-all-merchant.component.html',
+  styleUrls: ['./admin-all-merchant.component.css']
 })
-export class HomeComponent implements OnInit {
-
-  faPlus = faPlus;
+export class AdminAllMerchantComponent implements OnInit {
 
   loader : boolean = true;
 
-  displayStyle = "none";
   canvas: any;
   ctx: any;
   @ViewChild('salesLineChart') salesLineChart: any;
@@ -29,46 +24,25 @@ export class HomeComponent implements OnInit {
   commissionLineChartcanvas: any;
   commissionLineChartctx: any;
   @ViewChild('commissionLineChart') commissionLineChart: any;
-  barcanvas: any;
-  barctx: any;
-  @ViewChild('barRespCodeChart') barRespCodeChart: any;
-  piecanvas: any;
-  piectx: any;
-  @ViewChild('pieRespTypeChart') pieRespTypeChart: any;
-  pieCardBrandChartcanvas: any;
-  pieCardBrandChartctx: any;
-  @ViewChild('pieCardBrandChart') pieCardBrandChart: any;
-  tranBarcanvas: any;
-  tranBarctx: any;
-  @ViewChild('tranBarChart') tranBarChart: any;
 
-  latestTran : any;
   tranStatsSales : number = 0;
   tranStatsTransactions : number = 0;
   tranStatsFees : number = 0;
   tranStatsCommission : number = 0;
-  transPop : any;
-  
-  constructor(private http: HttpClient) { }
 
-  user: User = new User;
+  constructor(private http: HttpClient) { }
+  
+  merchant: Merchant = new Merchant;
 
   ngOnInit(): void {
-    
+    this.getMerchantStats();
   }
 
-  
-
-  
-  ngAfterViewInit() { 
-
-    this.user.merchantId = 'ClaroBP';
-
-    this.http.post('http://localhost:8080/home_trans_stats', this.user).subscribe(
-      (res:any) => 
-      {
+  getMerchantStats(){
+    this.http.post('http://localhost:8080/get_admin_all_merchant_stats', this.merchant).subscribe(
+      (res:any) => {
         if(res.length>0){
-
+          
           var salesLabelsVal = new Array();
           var salesdataVal = new Array();
           var tranLabelsVal = new Array();
@@ -103,87 +77,15 @@ export class HomeComponent implements OnInit {
           this.createtransactionsLineChart(tranLabelsVal, trandataVal);
           this.createcommissionLineChart(commLabelsVal, commdataVal);
           this.createfeesLineChart(feeLabelsVal, feedataVal);
-
-          this.loader = false; 
           
-        }else{
-        
+
+          this.loader = false;
         }
       }
     );
-
-    
-    this.http.post('http://localhost:8080/home_trans_latest', this.user).subscribe(
-      (res:any) => {
-        if(res.length>0){
-          this.latestTran = res.data; 
-        }
-      }
-    );
-
-    this.http.post('http://localhost:8080/home_resp_type', this.user).subscribe(
-      (res:any) => {
-        if(res.length>0){
-
-          var respTypeLables = new Array("Success","Declined");
-          var respTypeData = new Array((Math.round(res.data[0].successfulTransactions * 100) / 100).toFixed(1), (Math.round(res.data[0].declainedTransactions * 100) / 100).toFixed(1));
-
-          this.createPieRespTypeChart(respTypeLables, respTypeData);
-        }
-      }
-    );
-
-    this.http.post('http://localhost:8080/home_card_brand_type', this.user).subscribe(
-      (res:any) => {
-        if(res.length>0){
-
-          var respCardBarndLables = new Array("Visa","MasterCard","Maestro");
-          var respCardBarndData = new Array((Math.round(res.data[0].VisaTransactions * 100) / 100).toFixed(1), (Math.round(res.data[0].MasterCardTransactions * 100) / 100).toFixed(1), (Math.round(res.data[0].MaestroTransactions * 100) / 100).toFixed(1));
-
-          this.createPieCardBrandChart(respCardBarndLables, respCardBarndData);
-        }
-      }
-    );
-
-    this.http.post('http://localhost:8080/home_tran_type', this.user).subscribe(
-      (res:any) => {
-        if(res.length>0){
-
-          var respCardBarndLables = new Array("Purchase","Refund","Total");
-          var respCardBarndData = new Array(res.data[0].PurchaseTransactions, res.data[0].RefundTransactions, res.data[0].TotalTransactions);
-
-          this.createTranBarChart(respCardBarndLables, respCardBarndData);
-        }
-      }
-    );
-
-    this.http.post('http://localhost:8080/home_resp_code', this.user).subscribe(
-      (res:any) => {
-        if(res.length>0){
-
-          var barRespCodeLables = new Array();
-          var barRespCodeData = new Array();
-
-          for (let i = 0; i < res.data.length; i++) {
-            barRespCodeLables.push( (res.data[i].ResponseDesc==null ? '00' : res.data[i].ResponseDesc) );
-            barRespCodeData.push(res.data[i].count);            
-          }
-
-          this.createbarRespCodeChart(barRespCodeLables, barRespCodeData); 
-        }
-      }
-    );
-
   }
-  
-  openPopup(tran:any) {
-    console.log(tran);
-    this.transPop = tran;
-    this.displayStyle = "block";
-  }
-  closePopup() {
-    this.displayStyle = "none";
-  }
+
+
 
   createsalesLineChart(labelsVal:any,dataVal:any){
     this.canvas = this.salesLineChart.nativeElement;
@@ -408,100 +310,5 @@ export class HomeComponent implements OnInit {
     
   
   }
-
-
-  createbarRespCodeChart(barRespCodeLables:any, barRespCodeData:any){
-    this.barcanvas = this.barRespCodeChart.nativeElement;
-    this.barctx = this.barcanvas.getContext('2d');
-
-    new Chart(this.barctx, {
-      type: "bar",
-      data: {
-        labels: barRespCodeLables,
-        datasets: [{
-          label: 'RespCode',
-          data: barRespCodeData,
-          backgroundColor: '#682861',
-          categoryPercentage: 1.2,
-        }]
-      },
-      options: {
-        indexAxis: 'y',
-      }
-    });    
-  
-  }
-
-  createPieRespTypeChart(respTypeLables:any, respTypeData:any){
-    this.piecanvas = this.pieRespTypeChart.nativeElement;
-    this.piectx = this.piecanvas.getContext('2d');
-
-    new Chart(this.piectx, {
-      type: "doughnut",
-      data: {
-        
-        labels: respTypeLables,
-        datasets: [{
-          label: ' Percent ',
-          data: respTypeData,
-          backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)',
-            'rgb(255, 205, 86)'
-          ],
-          hoverOffset: 4
-        }]
-      }
-    });    
-  
-  }
-  
-  createPieCardBrandChart(respCardBarndLables:any, respCardBarndData:any){
-    this.pieCardBrandChartcanvas = this.pieCardBrandChart.nativeElement;
-    this.pieCardBrandChartctx = this.pieCardBrandChartcanvas.getContext('2d');
-
-    new Chart(this.pieCardBrandChartctx, {
-      type: "doughnut",
-      data: {
-        
-        labels: respCardBarndLables,
-        datasets: [{
-          label: 'My First Dataset',
-          data: respCardBarndData,
-          backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)',
-            'rgb(255, 205, 86)'
-          ],
-          hoverOffset: 4
-        }]
-      }
-    });    
-  
-  }
-
-  createTranBarChart(respCardBarndLables:any, respCardBarndData:any){
-    this.tranBarcanvas = this.tranBarChart.nativeElement;
-    this.tranBarctx = this.tranBarcanvas.getContext('2d');
-
-    new Chart(this.tranBarctx, {
-      type: "bar",
-      data: {
-        labels: respCardBarndLables,
-        datasets: [{
-          label: 'TxnCount',
-          data: respCardBarndData,
-          backgroundColor: '#6574cd',
-          categoryPercentage: 0.2,
-        }]
-      },
-      options: {
-      }
-    });    
-  
-  }
-
-
-
 
 }

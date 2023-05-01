@@ -1,9 +1,7 @@
-@import "../loader.css";
-
 .main-div {
 	background-image: linear-gradient(to right, #dc316e, #faae41);
 	max-height: 270px;
-	margin-bottom: 740px
+	margin-bottom: 582px;
 }
 
 .card-div {
@@ -29,7 +27,8 @@
 }
 
 .card-cont-trans {
-	padding-right: inherit
+	padding-right: inherit;
+	margin-top: 91px;
 }
 
 .lbl-line-title {
@@ -113,9 +112,17 @@ th {
 
 .searchtxt {
 	float: right;
-	width: 579px;
-	margin-right: 5px;
-	margin-top: -4px
+	width: 268px;
+	margin-right: 21px;
+	margin-top: -4px;
+	border-radius: 5px;
+}
+
+.datetxt {
+	float: right;
+	width: 119px;
+	margin-top: -4px;
+	border-radius: 5px 0px 0px 5px;
 }
 
 .lbl-downrpo {
@@ -155,9 +162,81 @@ th {
 
 .pagination-controls-div {
 	position: absolute;
-	top: 925px
+	top: 765px;
 }
 
 .card-type-sec {
 	height: 54px
+}
+.btn-back{
+	float: right;
+    padding: 1px 25px 3px 25px;
+    border-radius: 5px;
+    margin-left: 14px;
+	margin-top: -1px;
+	margin-right: 2px;
+}
+.lbl-enabled{
+	color: #168b16;
+    font-weight: 500;
+}
+.lbl-disabled{
+	color: red;
+    font-weight: 500;
+}
+.btn-cal{
+	float: right;
+    margin-right: 21px;
+    margin-top: -4px;	
+    margin-left: -1px;
+    border-radius: 0px 5px 5px 0px;
+    padding: 6px;
+    width: 39px;
+    border: 1px solid #00000029;
+    color: #646464;
+	transition-duration: 0.4s;
+}
+.btn-cal:hover {
+	background-color: #626262;
+	color: white;
+}
+.btn-srch{
+	float: right;
+    margin-right: 21px;
+    margin-top: -4px;	
+    margin-left: -1px;
+    border-radius: 5px;
+    padding: 6px;
+    width: 122px;
+    border: 1px solid #00000029;
+    color: #646464;
+	transition-duration: 0.4s;
+}
+.btn-srch:hover {
+	background-color: #626262;
+	color: white;
+}
+.btn-dwld{
+	float: right;
+    margin-right: 21px;
+    margin-top: -4px;	
+    margin-left: -1px;
+    border-radius: 5px;
+    padding: 6px;
+    width: 183px;
+    border: 1px solid #00000029;
+    color: #646464;
+	transition-duration: 0.4s;
+}
+.btn-dwld:hover {
+	background-color: #4CAF50; 
+	color: white;
+}
+.fa-search{
+	font-size: 14px;
+	margin-left: 2px;
+}
+.fa-download{
+	font-size: 14px;
+	margin-left: 2px;
 }

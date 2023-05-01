@@ -1,3 +1,5 @@
+@import "../loader.css";
+
 .main-div{
     background-image: linear-gradient(to right, #dc316e , #faae41);
     max-height: 824px;
@@ -169,4 +171,10 @@ hr{
 .fa-plus{
     font-size: 10px;
     color: #168b16;
+}
+.lst-tans-tbl{
+    cursor: pointer;
+}
+.lst-tans-tbl:hover {
+    background: #0000000a;
 }

@@ -59,6 +59,7 @@ footer{
 .logo-img{
     margin: 21px 10px 2px 21px;
     border-radius: 6px;
+    cursor: pointer;
 }
 .lbl-home{
     color: white;
@@ -80,3 +81,10 @@ footer{
     color: white;
     font-weight: 500;
 }
+.ddbtn:active {
+    background:#ee6700;
+}
+.dropdown-menu{
+    z-index: 9999;
+}
+

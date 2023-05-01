@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import Chart from 'chart.js/auto';
-import { Login } from './model/login.model';
+import { User } from './model/user.model';
+import { AuthService } from './auth.service';
 
 
 @Component({
@@ -13,26 +14,56 @@ export class AppComponent {
   title = 'omniui';
 
   public chart: any;
-  login: Login = new Login;
+  login: User = new User;
   header:boolean = false;
 
-  constructor(private router: Router) { }
+  isUserLoggedIn = false;
+
+  constructor(private router: Router,private authService: AuthService) { }
 
   ngOnInit(): void {
-    if(!localStorage.getItem('id')){
-      this.router.navigate(['/']);
-      this.header = false;
-    }else{
-      this.login = JSON.parse(localStorage.getItem('id') || '{}');
+
+    ///////////////////////////
+    // let storeData = localStorage.getItem("token");
+    // console.log("StoreData: " + storeData);
+    // if( storeData != null && storeData == "true"){
+    //     this.isUserLoggedIn = true;
+    // }else{
+    //   this.isUserLoggedIn = false;
+    // }
+
+    if(localStorage.getItem('owuitoken')){
       this.header = true;
+    }else{
+      this.header = false;
+      this.router.navigate(['/']);
     }
-    console.log(this.header);
+      // console.log(this.header);
+
+
+    //////////////////////////
+
+    // if(!localStorage.getItem('id')){
+    //   this.router.navigate(['/']);
+    //   this.header = false;
+    // }else{
+    //   this.login = JSON.parse(localStorage.getItem('id') || '{}');
+      // this.header = true;
+    // }
+    // console.log(this.header);
   }
 
   logout(){
-    localStorage.removeItem('id');
+
+    //////////////
+    this.authService.logout();
     this.router.navigate(['/']); 
-    window.location.reload();      
+    window.location.reload();
+    //////////////
+
+    // localStorage.removeItem('id');
+    // this.router.navigate(['/']); 
+    // window.location.reload();      
   }
 
   createChart(){

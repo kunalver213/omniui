@@ -17,6 +17,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { DownloadReportComponent } from './download-report/download-report.component';
+import { TerminalDetailComponent } from './terminal-detail/terminal-detail.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { MerchantProfileComponent } from './merchant-profile/merchant-profile.component';
+import { AdminAllMerchantComponent } from './admin-all-merchant/admin-all-merchant.component';
+import { AdminTranDetailComponent } from './admin-tran-detail/admin-tran-detail.component';
+import { MerchantListComponent } from './merchant-list/merchant-list.component';
+import { AdminMerchantListComponent } from './admin-merchant-list/admin-merchant-list.component';
+import { AdminGraphsComponent } from './admin-graphs/admin-graphs.component';
+import { AdminToptenComponent } from './admin-topten/admin-topten.component';
+import { AdminMerchantDetailComponent } from './admin-merchant-detail/admin-merchant-detail.component';
+import { AdminDownloadReportComponent } from './admin-download-report/admin-download-report.component';
 
 
 @NgModule({
@@ -26,7 +37,18 @@ import { DownloadReportComponent } from './download-report/download-report.compo
     SignupComponent,
     HomeComponent,
     TranscationHistoryComponent,
-    DownloadReportComponent
+    DownloadReportComponent,
+    TerminalDetailComponent,
+    UserProfileComponent,
+    MerchantProfileComponent,
+    AdminAllMerchantComponent,
+    AdminTranDetailComponent,
+    MerchantListComponent,
+    AdminMerchantListComponent,
+    AdminGraphsComponent,
+    AdminToptenComponent,
+    AdminMerchantDetailComponent,
+    AdminDownloadReportComponent
   ],
   imports: [
     BrowserModule,

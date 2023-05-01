@@ -1,0 +1,73 @@
+<div>
+
+    <div class="container" class="main-div">
+
+
+
+        <div class="row cards-row">
+            <div class="col-12 card-cont-trans">
+                <div class="card-div-trans p-0 box-shadow">
+                    <div class="bar-transaction"> 
+                        Transaction Details                        
+                        <button class="btn-dwld">Download Report <fa-icon class="fa-download" [icon]="faDownload" ></fa-icon> </button>
+                        <button class="btn-srch">Search <fa-icon class="fa-search" [icon]="faSearch" ></fa-icon></button>
+                        <!-- <button class="btn-back">Search</button> -->
+                        <input type="text" class="form-control searchtxt" placeholder="Merchant Id" >
+                        <!-- (keyup)="filterData()" [(ngModel)]="searchText" -->
+
+
+                            <button class="btn-cal" (click)="e.toggle()"><fa-icon class="fa-calendar-day" [icon]="faCalendarDay"></fa-icon></button>
+                            <!-- <button class="btn btn-outline-secondary bi bi-calendar3 btn-cal" (click)="e.toggle()" type="button"></button> -->
+                            <input class="form-control datetxt"  placeholder="End Date" name="dp" [(ngModel)]="modeldp2" ngbDatepicker #e="ngbDatepicker" readonly />
+
+
+                            <!-- <button class="btn btn-outline-secondary bi bi-calendar3 btn-cal" (click)="d.toggle()" type="button"></button> -->
+                            <button class="btn-cal" (click)="d.toggle()"><fa-icon class="fa-calendar-day" [icon]="faCalendarDay"></fa-icon></button>
+                            <input class="form-control datetxt" placeholder="Start Date" name="dp" [(ngModel)]="modeldp1" ngbDatepicker #d="ngbDatepicker" readonly />
+
+                            
+                    </div>
+
+                    <div class="tbody-div">
+                        <table class="table" > 
+                            <!-- *ngIf="tranHistoryTab" -->
+                            <thead >
+                                <!-- class="sticky-top" -->
+                            <tr>
+                                <th scope="col" class="p-left-30px">NO. OF SERIES</th>
+                                <th scope="col">MODEL</th>
+                                <th scope="col">STATUS</th>
+                                <th scope="col">CREATED DATE</th>
+                                <th scope="col" class="p-right-25px">UPDATED DATE</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr >
+                                    <!-- *ngFor="let tran of tranHistoryTab | paginate: { itemsPerPage: tableSize, currentPage: page, totalItems: count }; let i = index " -->
+                                    <td class="p-left-30px"></td>
+                                    <td class="card-type-sec">  </td>
+                                    <td>
+                                        
+                                    </td>
+                                    <td></td>
+                                    <td class="p-right-25px"> </td>
+                                </tr>
+                            </tbody>
+                        </table>
+    
+    
+                        <!-- <pagination-controls
+                        class="pagination-controls-div"
+                        previousLabel="Previous"
+                        nextLabel="Next"
+                        (pageChange)="onTableDataChange($event)">
+                        </pagination-controls> -->
+                        </div>
+                </div>
+            </div>
+          
+        </div>
+
+    </div>
+
+</div>

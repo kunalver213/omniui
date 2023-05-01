@@ -1,3 +1,5 @@
+<div id="cover-spin" *ngIf="loader"></div>
+<div class="loader" *ngIf="loader"></div>
 
 <div class="container" class="main-div">
 
@@ -71,7 +73,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr (click)="openPopup(tran)" *ngFor="let tran of latestTran">
+                  <tr (click)="openPopup(tran)" *ngFor="let tran of latestTran" class="lst-tans-tbl">
                     <td class="p-left-25px">{{tran.datev}} {{tran.timev}}</td>
                     <td>
                       <img *ngIf="tran.CardType==='2002'" src="../../assets/maestro.jpg" alt="Trulli" class="card-img-maestro">
@@ -164,7 +166,12 @@
         </svg>
       </div>
       <div class="row" style="visibility: hidden;">x</div>
-      <div class="lbl-purchase">Purchase</div>
+      <div class="lbl-purchase">
+        <span *ngIf="transPop.TransactionType==='000000' && transPop.MessageType==='0210'">Purchase</span>
+        <span *ngIf="transPop.TransactionType==='200000' && transPop.MessageType==='0210'">Refund</span>
+        <span *ngIf="transPop.TransactionType==='000000' && transPop.MessageType==='0420'">Purchase Reversal</span>
+        <span *ngIf="transPop.TransactionType==='200000' && transPop.MessageType==='0420'">Refund Reversal</span>
+      </div>
       <hr>
       <div class="row">
         <div class="col-6">Card</div>
