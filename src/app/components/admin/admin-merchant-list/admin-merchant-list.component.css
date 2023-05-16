@@ -1,0 +1,277 @@
+.main-div {
+	background-image: linear-gradient(to right, #dc316e, #faae41);
+	max-height: 270px;
+	margin-bottom: 475px;
+}
+
+.card-div {
+	padding: 20px;
+	background-color: #fff;
+	margin: 20px 0 20px 0;
+	border-radius: 8px
+}
+
+.card-div-trans {
+	padding: 20px;
+	background-color: #fff;
+	margin: 0 0 20px 0;
+	border-radius: 8px
+}
+
+.cards-row {
+	padding: 0 18px 0 18px
+}
+
+.card-cont {
+	padding-right: 0
+}
+
+.card-cont-trans {
+	padding-right: inherit;
+	margin-top: 91px;
+}
+
+.lbl-line-title {
+	color: #969696
+}
+
+.title-bar {
+	border-radius: 6px;
+	text-align: center;
+	background-color: #fff
+}
+
+thead {
+	background-color: #eef6fe;
+	color: #969696;
+	font-size: 12px
+}
+
+table {
+	font-size: 13px;
+	border-top: 1px solid #00000014
+}
+
+td,
+th {
+	padding: 12px
+}
+
+.bar-transaction {
+	padding: 21px 18px 16px 27px
+}
+
+.p-left-30px {
+	padding-left: 60px
+}
+
+.p-right-25px {
+	padding-right: 25px
+}
+
+.text-right {
+	text-align: right
+}
+
+.tbody-div {
+	margin-top: 9px;
+	min-height: 549px;
+	overflow: auto
+}
+
+.box-shadow {
+	box-shadow: 0 6px 13px 4px #00000026
+}
+
+.btn-primary {
+	width: 170px;
+	margin-top: 15px;
+	margin-right: 15px;
+	background-color: #5e72e4;
+	padding-top: 10px;
+	padding-bottom: 10px
+}
+
+.btn-light {
+	width: 120px;
+	margin-top: 15px;
+	margin-right: 15px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	color: #969696
+}
+
+.trans-timespan {
+	margin-left: 15px;
+	margin-top: 70px
+}
+
+.lbl-line-amt {
+	font-weight: 700
+}
+
+.searchtxt {
+	float: right;
+	width: 268px;
+	margin-right: 21px;
+	margin-top: -4px;
+	border-radius: 5px;
+}
+
+.datetxt {
+	float: right;
+	width: 119px;
+	margin-top: -4px;
+	border-radius: 5px 0px 0px 5px;
+}
+
+.lbl-downrpo {
+	float: right;
+	font-weight: 700;
+	margin-right: 25px;
+	color: #5e72e4;
+	cursor: pointer
+}
+
+.fa-faExclamationTriangle {
+	color: red;
+	font-size: 10px
+}
+
+.card-img-maestro {
+	height: 29px;
+	width: 37px;
+	margin-left: 3px
+}
+
+.card-img-mastercard {
+	height: 28px;
+	width: 35px;
+	margin-left: 3px
+}
+
+.card-img-visa {
+	height: 15px;
+	width: 45px
+}
+
+.fa-plus {
+	font-size: 10px;
+	color: #168b16
+}
+
+.pagination-controls-div {
+	/* position: absolute;
+	top: 765px; */
+}
+
+.card-type-sec {
+	height: 54px
+}
+.btn-back{
+	float: right;
+    padding: 1px 25px 3px 25px;
+    border-radius: 5px;
+    margin-left: 14px;
+	margin-top: -1px;
+	margin-right: 2px;
+}
+.lbl-enabled{
+	color: #168b16;
+    font-weight: 500;
+}
+.lbl-disabled{
+	color: red;
+    font-weight: 500;
+}
+.btn-cal{
+	float: right;
+    margin-right: 21px;
+    margin-top: -4px;	
+    margin-left: -1px;
+    border-radius: 0px 5px 5px 0px;
+    padding: 6px;
+    width: 39px;
+    border: 1px solid #00000029;
+    color: #646464;
+	transition-duration: 0.4s;
+}
+.btn-cal:hover {
+	background-color: #626262;
+	color: white;
+}
+.btn-srch{
+	float: right;
+    margin-right: 21px;
+    margin-top: -4px;	
+    margin-left: -1px;
+    border-radius: 5px;
+    padding: 6px;
+    width: 122px;
+    border: 1px solid #00000029;
+    color: #646464;
+	transition-duration: 0.4s;
+}
+.btn-srch:hover {
+	background-color: #626262;
+	color: white;
+}
+.btn-dwld{
+	float: right;
+    margin-right: 21px;
+    margin-top: -4px;	
+    margin-left: -1px;
+    border-radius: 5px;
+    padding: 6px;
+    width: 183px;
+    border: 1px solid #00000029;
+    color: #646464;
+	transition-duration: 0.4s;
+}
+.btn-dwld:hover {
+	background-color: #4CAF50; 
+	color: white;
+}
+.fa-search{
+	font-size: 14px;
+	margin-left: 2px;
+}
+.fa-download{
+	font-size: 14px;
+	margin-left: 2px;
+}
+.modal{
+    background-color: #000000b3;
+    /* padding-top: 80px;
+    padding-left: 838px; */
+}
+.modal-content{
+    display: block;
+    padding: 23px;
+}
+.btn-cross{
+    float: right;
+    margin-top: -13px;
+    margin-right: -10px;
+    cursor: pointer;
+}
+.lbl-purchase{
+    background-color: #198754;
+    border-radius: 25px;
+    text-align: center;
+    color: white;
+    padding: 6px;
+}
+.lbl-amtDet{
+    background-color: #e3e3e3;
+    border-radius: 25px;
+    text-align: center;
+    color: black;
+    padding: 6px;
+}
+.merchant-tr{
+	cursor: pointer;
+}
+.merchant-tr:hover {
+    background: #0000000a;
+}

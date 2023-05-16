@@ -1,0 +1,180 @@
+@import "../../../loader.css";
+
+.main-div{
+    background-image: linear-gradient(to right, #dc316e , #faae41);
+    max-height: 824px;
+    margin-bottom: 884px;
+}
+.card-div{
+    padding: 20px;
+    background-color: white;
+    margin: 20px 0px 20px 0px;
+    border-radius: 8px;
+}
+.cards-row{
+    padding: 0px 18px 0px 18px; 
+}
+.card-cont{
+    padding-right: 0px;
+}
+.lbl-line-title{
+    color: #969696;
+}
+.lbl-line-amt{
+    margin-bottom: 30px;
+}
+.title-bar{
+    border-radius: 6px;
+    text-align: center;
+    background-color: white;
+    margin-top: 70px;
+}
+.lbl-home{
+    color: white;
+    font-weight: 700;
+    text-align: center;
+}
+.bi-person-fill{
+    background: #adb5bd;
+    color: white;
+    padding: 7px;
+    border-radius: 68px;
+    width: 35px;
+    height: 35px;
+}
+.lbl-home{
+    margin-top: 9px;
+}
+.user-lbls{
+    font-size: 12px;
+    color: white;
+    font-weight: 500;
+}
+.logo-img{
+    margin: 21px 10px 2px 21px;
+    border-radius: 6px;
+}
+.btn-seeall{
+    float: right;
+    font-size: 12px;
+    font-weight: 700;
+    background-color: #5e72e4;
+}
+thead{
+    background-color: #eef6fe;
+    color: #969696;
+    font-size: 12px;
+}
+table{
+    font-size: 13px;
+    border-top: 1px solid #00000014;
+}
+td, th{
+    padding: 12px;
+}
+.bar-transaction{
+    padding: 21px 18px 16px 27px;
+}
+.resp-transaction{
+    padding: 17px 18px 19px 27px;
+}
+.p-left-25px{
+    padding-left: 25px;
+}
+.p-right-25px{
+    padding-right: 25px;
+}
+.modal{
+    background-color: #000000b3;
+    padding-top: 80px;
+    padding-left: 838px;
+}
+.modal-content{
+    display: block;
+    padding: 23px;
+}
+.btn-success{
+    width: 100%;
+    border-radius: 26px;
+}
+.btn-cross{
+    float: right;
+    margin-top: -13px;
+    margin-right: -10px;
+    cursor: pointer;
+}
+.bi-x{
+    height: 23px;
+    width: 23px;
+}
+hr{
+    color: #7e7e7e;
+}
+.text-right{
+    text-align: right;
+}
+.btn-dark{
+    width: 100%;
+    border-radius: 26px;
+    background: #d0d0d0;
+    color: black;
+    border: 0px;
+}
+.salesLineChart-div{
+    margin-top: 29px;
+}
+.barChart-div{
+    padding: 10px 30px 202px 30px;
+}
+.tbody-div{
+    margin-top: 9px;
+    max-height: 500px;
+    overflow: auto;
+}
+.box-shadow{
+    box-shadow: 0px 6px 13px 4px #00000026;
+}
+.pieChart-div{
+    padding: 25px 52px 145px 52px;
+}
+.tranBarChart-div{
+    padding: 15px 50px 100px 50px; 
+}
+.lbl-purchase{
+    background-color: #198754;
+    border-radius: 25px;
+    text-align: center;
+    color: white;
+    padding: 6px;
+}
+.lbl-amtDet{
+    background-color: #e3e3e3;
+    border-radius: 25px;
+    text-align: center;
+    color: black;
+    padding: 6px;
+}
+.card-img-maestro{
+    height: 29px;
+    width: 37px;
+    margin-left: 3px;
+}
+.card-img-mastercard{
+    height: 28px;
+    width: 35px;
+    margin-left: 3px;
+}
+.card-img-visa{
+    height: 15px;
+    width: 45px;
+}
+.fa-plus{
+    font-size: 10px;
+    color: #168b16;
+}
+.lst-tans-tbl{
+    cursor: pointer;
+}
+.lst-tans-tbl:hover {
+    background: #0000000a;
+}

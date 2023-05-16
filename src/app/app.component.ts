@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import Chart from 'chart.js/auto';
 import { User } from './model/user.model';
-import { AuthService } from './auth.service';
+import { AuthService } from './services/auth/auth.service';
 
 
 @Component({

@@ -1,0 +1,71 @@
+<div>
+
+    <div class="container" class="main-div">
+
+
+
+        <div class="row cards-row">
+            <div class="col-12 card-cont-trans">
+                <div class="card-div-trans p-0 box-shadow">
+                    <div class="bar-transaction"> 
+                        Transaction Details                        
+                        <button class="btn-dwld" (click)="downloadReport()">Download Report <fa-icon class="fa-download" [icon]="faDownload" ></fa-icon> </button>
+                        <button class="btn-srch" (click)="postList()">Search <fa-icon class="fa-search" [icon]="faSearch" ></fa-icon></button>
+
+                        <!-- <input type="text" class="form-control searchtxt" placeholder="Merchant Id" > -->
+                        <input type="text" class="form-control searchtxt" placeholder="Merchant Id" (keyup)="filterData()" [(ngModel)]="searchText" [disabled]='!tranHistoryTab'>
+                        
+                            <button class="btn-cal" (click)="e.toggle()"><fa-icon class="fa-calendar-day" [icon]="faCalendarDay"></fa-icon></button>
+                            <input class="form-control datetxt"  placeholder="End Date" name="dp" [(ngModel)]="modeldp2" ngbDatepicker #e="ngbDatepicker" readonly />
+                            <button class="btn-cal" (click)="d.toggle()"><fa-icon class="fa-calendar-day" [icon]="faCalendarDay"></fa-icon></button>
+                            <input class="form-control datetxt" placeholder="Start Date" name="dp" [(ngModel)]="modeldp1" ngbDatepicker #d="ngbDatepicker" readonly />
+
+                            
+                    </div>
+
+                    <div class="tbody-div">
+                        <table class="table" >
+                            <thead *ngIf="tranHistoryTab">
+                                <!-- class="sticky-top" -->
+                            <tr>
+                                <th scope="col" class="p-left-30px">Date</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">RRN</th>
+                                <th scope="col">TraceNo</th>
+                                <th scope="col">TransactionType</th>
+                                <th scope="col" class="p-right-25px">RetailerId</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let tran of tranHistoryTab | paginate: { itemsPerPage: tableSize, currentPage: page, totalItems: count }; let i = index ">
+                                    <td class="p-left-30px">{{tran.Datev}}</td>
+                                    <td>{{tran.Amount}}</td>
+                                    <td>{{tran.RRN}}</td>
+                                    <td>{{tran.TraceNo}}</td>
+                                    <td>
+                                        <span *ngIf="tran.TransactionType==='000000' && tran.MessageType==='0210'">Purchase</span>
+                                        <span *ngIf="tran.TransactionType==='200000' && tran.MessageType==='0210'">Refund</span>
+                                        <span *ngIf="tran.TransactionType==='000000' && tran.MessageType==='0420'">Purchase Reversal</span>
+                                        <span *ngIf="tran.TransactionType==='200000' && tran.MessageType==='0420'">Refund Reversal</span>
+                                    </td>
+                                    <td>{{tran.RetailerId}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+    
+    
+                        <pagination-controls *ngIf="tranHistoryTab"
+                        class="pagination-controls-div"
+                        previousLabel="Previous"
+                        nextLabel="Next"
+                        (pageChange)="onTableDataChange($event)">
+                        </pagination-controls>
+                        </div>
+                </div>
+            </div>
+          
+        </div>
+
+    </div>
+
+</div>

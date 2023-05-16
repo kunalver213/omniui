@@ -1,0 +1,130 @@
+<div>
+
+    <div class="container" class="main-div">
+
+
+
+        <div class="row cards-row">
+            <div class="col-12 card-cont-trans">
+                <div class="card-div-trans p-0 box-shadow">
+                    <div class="bar-transaction"> 
+                        Merchant List                        
+                        <!-- <button class="btn-dwld">Download Report <fa-icon class="fa-download" [icon]="faDownload" ></fa-icon> </button> -->
+                        <!-- <button class="btn-srch">Search <fa-icon class="fa-search" [icon]="faSearch" ></fa-icon></button> -->
+                        <!-- <button class="btn-back">Search</button> -->
+                        <!-- <input type="text" class="form-control searchtxt" placeholder="Merchant Id" > -->
+                        <!-- (keyup)="filterData()" [(ngModel)]="searchText" -->
+
+
+                            <!-- <button class="btn-cal" (click)="e.toggle()"><fa-icon class="fa-calendar-day" [icon]="faCalendarDay"></fa-icon></button> -->
+                            <!-- <button class="btn btn-outline-secondary bi bi-calendar3 btn-cal" (click)="e.toggle()" type="button"></button> -->
+                            <!-- <input class="form-control datetxt"  placeholder="End Date" name="dp" [(ngModel)]="modeldp2" ngbDatepicker #e="ngbDatepicker" readonly /> -->
+
+
+                            <!-- <button class="btn btn-outline-secondary bi bi-calendar3 btn-cal" (click)="d.toggle()" type="button"></button> -->
+                            <!-- <button class="btn-cal" (click)="d.toggle()"><fa-icon class="fa-calendar-day" [icon]="faCalendarDay"></fa-icon></button>
+                            <input class="form-control datetxt" placeholder="Start Date" name="dp" [(ngModel)]="modeldp1" ngbDatepicker #d="ngbDatepicker" readonly /> -->
+
+                            
+                    </div>
+
+                    <div class="tbody-div">
+                        <table class="table" > 
+                            <!--  -->
+                            <thead *ngIf="merchantListTab" >
+                                <!-- class="sticky-top" -->
+                            <tr>
+                                <th scope="col" class="p-left-30px">Merchant</th>
+                                <th scope="col">Status</th>
+                                <th scope="col" class="p-right-25px">Total Transaction</th>
+                            </tr>
+                            </thead>
+                            <tbody >
+                                <tr *ngFor="let tran of merchantListTab | paginate: { itemsPerPage: tableSize, currentPage: page, totalItems: count }; let i = index "
+                                (click)="openPopup(tran)"
+                                class="merchant-tr">
+                                    <td class="p-left-30px">{{tran.retailerName}}</td>
+                                    <td>
+                                      <span *ngIf="tran.status=='1'">Active</span>
+                                      <span *ngIf="tran.status!='1'">Inactive/Blocked</span>
+                                    </td>                               
+                                    <td class="p-right-25px"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+    
+    
+                        <pagination-controls *ngIf="merchantListTab"
+                        class="pagination-controls-div"
+                        previousLabel="Previous"
+                        nextLabel="Next"
+                        (pageChange)="onTableDataChange($event)">
+                        </pagination-controls>
+                        </div>
+                </div>
+            </div>
+          
+        </div>
+
+    </div>
+
+</div>
+
+<div *ngIf="transPop"
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display':displayStyle}">
+  <div class="modal-dialog" role="document"> 
+    <div class="modal-content">
+      <div class="btn-cross" (click)="closePopup()">      
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+          <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+        </svg>
+        
+      </div>
+      <div class="row" style="visibility: hidden;">x</div>
+      <hr>
+      <div class="row">
+        <div class="col-6">Account Type</div>
+        <div class="col-6 text-right">{{transPop.accountType}}</div>
+      </div>
+      <div class="row">
+        <div class="col-6">Institution ID</div>
+        <div class="col-6 text-right">{{transPop.institutionID}}</div>
+      </div>
+      <div class="row">
+        <div class="col-6">Retailer Religion</div>
+        <div class="col-6 text-right">{{transPop.retailerReligion}}</div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-6">Retailer Legal Name</div>
+        <div class="col-6 text-right">{{transPop.retailerLegalName}}</div>
+      </div>
+      <div class="row">
+        <div class="col-6">Account Id</div>
+        <div class="col-6 text-right">{{transPop.accountId}}</div>
+      </div>
+      <div class="row">
+        <div class="col-6">Retailer Category Code</div>
+        <div class="col-6 text-right">{{transPop.retailerCategoryCode}}</div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-6">Contact Number</div>
+        <div class="col-6 text-right">{{transPop.contactNumber}}</div>
+      </div>
+      <div class="row">
+        <div class="col-6">Address</div>
+        <div class="col-6 text-right">{{transPop.address}}</div>
+      </div> 
+      <div class="row">
+        <div class="col-6">Email Id</div>
+        <div class="col-6 text-right">{{transPop.emailId | slice:0:25}}...</div>
+      </div>
+
+      
+    </div>
+  </div>
+</div>

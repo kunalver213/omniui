@@ -1,0 +1,59 @@
+.navbar{
+    margin-bottom: 18px;
+}
+.navbar-top{
+    color: #ff6f00;
+    padding-left: 25px;
+    font-family: Trebuchet MS;
+    font-size: 38px;
+}
+.float-left{
+    float: left;
+}
+.lbl-welcome{
+    text-align: left;
+    color: #ff6f00;
+    font-weight: 700;
+}
+.lbl-msg{
+    text-align: left;
+    color: #969696;
+}
+.btn-submit{
+    width: 100%;
+    background-image: linear-gradient(to right, #feb502 , #f3524b);
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+.lbl-signup-txt{
+    color: #969696;    
+}
+.lbl-signup{
+    color: #ff6f00;
+    font-weight: 700;   
+    cursor: pointer;
+}
+.bg_login_pic{
+    height: 500px;
+    width: 536px;
+}
+.form-div{
+    margin-top: 40px;
+}
+
+.alert-danger{
+    padding: 4px;
+    margin-top: 26px;
+}
+
+.alert {
+    background-color: #f44336;
+    color: white;
+    opacity: 1;
+    transition: opacity 0.6s;
+    margin-bottom: 15px;
+  }
+  
